@@ -77,6 +77,8 @@ public class LinkWand extends Item {
                         world.getRegistryKey(),
                         ((BlockHitResult) hit).getBlockPos());
                 Manager.setLookingAt(lookingAt);
+            } else {
+                Manager.setLookingAt(null);
             }
         }
     }

@@ -9,5 +9,6 @@ public class WlrtDatagen implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = gen.createPack();
 		pack.addProvider(WlrtModelProvider::new);
 		pack.addProvider(WlrtLangProvider::new);
+		pack.addProvider(WlrtRecipeProvider::new);
 	}
 }
