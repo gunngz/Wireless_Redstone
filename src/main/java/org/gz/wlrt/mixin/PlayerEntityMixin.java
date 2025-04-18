@@ -3,15 +3,12 @@ package org.gz.wlrt.mixin;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import org.gz.wlrt.Wlrt;
 import org.gz.wlrt.item.LinkWand;
 import org.gz.wlrt.utils.Manager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static org.gz.wlrt.Wlrt.QBZ;
 
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin {

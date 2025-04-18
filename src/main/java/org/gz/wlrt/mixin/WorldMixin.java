@@ -6,7 +6,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.gz.wlrt.Wlrt;
 import org.gz.wlrt.utils.GlobalBlockPos;
 import org.gz.wlrt.utils.Manager;
 import org.spongepowered.asm.mixin.Final;

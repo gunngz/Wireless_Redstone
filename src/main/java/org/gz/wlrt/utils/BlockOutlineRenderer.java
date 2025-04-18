@@ -1,6 +1,5 @@
 package org.gz.wlrt.utils;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;
@@ -11,8 +10,6 @@ import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
-
-import static org.gz.wlrt.Wlrt.QBZ;
 
 public class BlockOutlineRenderer {
     public static void register() {
@@ -41,6 +38,8 @@ public class BlockOutlineRenderer {
 
         Vec3d cameraPos = camera.getPos();
         Box box = new Box(highlightPos).offset(-cameraPos.x, -cameraPos.y, -cameraPos.z);
+
+        assert vertexConsumers != null;
 
         WorldRenderer.drawBox(
                 matrices,

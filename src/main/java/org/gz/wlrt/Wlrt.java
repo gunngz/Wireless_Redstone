@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 public class Wlrt implements ModInitializer {
 	public static final String MOD_ID = "wlrt";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final Logger QBZ = LoggerFactory.getLogger("debug");
 
     @Override
 	public void onInitialize() {

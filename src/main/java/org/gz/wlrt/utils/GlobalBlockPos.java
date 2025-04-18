@@ -35,25 +35,12 @@ public class GlobalBlockPos extends BlockPos {
         return worldKey.getValue().getNamespace() + ":" + worldKey.getValue().getPath() + ":" + getX() + ":" + getY() + ":" + getZ();
     }
 
-    public String toString(World world) {
-        return world.getBlockState(this).toString() + " at " + toString();
-    }
-
-
     public boolean isIn(World world) {
         return this.worldKey.equals(world.getRegistryKey());
     }
 
     public ServerWorld getWorld(ServerWorld world) {
         return world.getServer().getWorld(this.worldKey);
-    }
-
-    public int getChunkX() {
-        return getX() >> 4;
-    }
-
-    public int getChunkZ() {
-        return getZ() >> 4;
     }
 
     @Override

@@ -93,7 +93,7 @@ public class Manager {
                 Files.createDirectories(parent);
             }
         } catch (IOException e) {
-            Wlrt.LOGGER.error("Failed to create parent directory for save file: " + e.getMessage());
+            Wlrt.LOGGER.error("Failed to create parent directory for save file: {}", e.getMessage());
         }
     }
 
@@ -105,9 +105,8 @@ public class Manager {
                 StandardOpenOption.CREATE,
                 StandardOpenOption.TRUNCATE_EXISTING)) {
             JsonObject mapObject = new JsonObject();
-            TO_SOURCE_MAP.forEach((to, source) -> {
-                mapObject.add(to.toString(), new JsonPrimitive(source.toString()));
-            });
+            TO_SOURCE_MAP.forEach(
+                    (to, source) -> mapObject.add(to.toString(), new JsonPrimitive(source.toString())));
             String json = GSON.toJson(mapObject);
             outputStream.write(json.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
