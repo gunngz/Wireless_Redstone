@@ -1,0 +1,7 @@
+{
+  "item.wlrt.link_wand": "Link Wand",
+  "text.wlrt.fail_to_set_source": "Failed to set source %s",
+  "text.wlrt.remove_successfully": "Removed %s successfully",
+  "text.wlrt.set_output_to": "Set output to %s",
+  "text.wlrt.set_source_to": "Set source to %s"
+}

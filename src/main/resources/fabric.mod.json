@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "wlrt",
+	"version": "${version}",
+	"name": "Wireless Redstone",
+	"description": "Wireless Redstone! No more freaking weird redstone contraptions!\nBy the way it doesn't add such transmitter & receiver, but a bind wand!",
+	"authors": [
+		"gunngz"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/wlrt/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.gz.wlrt.Wlrt"
+		],
+		"fabric-datagen": [
+			"org.gz.wlrt.datagen.WlrtDatagen"
+		],
+		"client": [
+			"org.gz.wlrt.WlrtClient"
+		]
+	},
+	"mixins": [
+		"wlrt.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.12",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
