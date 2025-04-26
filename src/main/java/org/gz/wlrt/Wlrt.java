@@ -15,8 +15,10 @@ public class Wlrt implements ModInitializer {
     @Override
 	public void onInitialize() {
 		LinkWand.register();
-		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER)
+		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER) {
 			ManagerLoader.loadForRemoteServer();
-		else ManagerLoader.loadForIntegratedServer();
+		} else {
+			ManagerLoader.loadForIntegratedServer();
+		}
 	}
 }

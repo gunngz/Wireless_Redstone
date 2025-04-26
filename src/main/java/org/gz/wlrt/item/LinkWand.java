@@ -1,6 +1,8 @@
 package org.gz.wlrt.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,8 +20,10 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.gz.wlrt.Wlrt;
+import org.gz.wlrt.utils.Connections;
 import org.gz.wlrt.utils.GlobalBlockPos;
 import org.gz.wlrt.utils.Manager;
+import org.gz.wlrt.utils.ManagerLoader;
 
 
 public class LinkWand extends Item {
@@ -39,6 +43,7 @@ public class LinkWand extends Item {
         String identifier = pos.toString();
         if (Manager.isLinkedOutput(pos)) {
             sendMessage(ctx, "remove_successfully", identifier);
+            Connections.sendIfInServer(Connections.UPDATE_REMOVE_BY_OUTPUT, pos);
             Manager.removeByOutput(pos);
             return ActionResult.SUCCESS;
         }
@@ -105,6 +110,14 @@ public class LinkWand extends Item {
     }
 
     private void addToManager(GlobalBlockPos pos, GlobalBlockPos source) {
+        if (ManagerLoader.server != null) {
+            ManagerLoader.server.getPlayerManager().getPlayerList().forEach(player -> {
+                ServerPlayNetworking.send(player, Connections.UPDATE_ADD,
+                        PacketByteBufs.create()
+                                .writeString(pos.toString())
+                                .writeString(source.toString()));
+            });
+        }
         Manager.add(pos, source);
     }
 

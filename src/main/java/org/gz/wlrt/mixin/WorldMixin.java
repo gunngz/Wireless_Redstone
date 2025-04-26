@@ -6,6 +6,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.gz.wlrt.utils.Connections;
 import org.gz.wlrt.utils.GlobalBlockPos;
 import org.gz.wlrt.utils.Manager;
 import org.spongepowered.asm.mixin.Final;
@@ -68,12 +69,13 @@ public abstract class WorldMixin {
 
         if (Manager.isLinkedSource(removedBlock)) {
             for (GlobalBlockPos output : Manager.getOutputs(removedBlock)) {
-                // Here ok.
                 output.getWorld(world)
                         .updateNeighbor(output, world.getBlockState(removedBlock).getBlock(), removedBlock);
             }
+            Connections.sendIfInServer(Connections.UPDATE_REMOVE_BY_SOURCE, removedBlock);
             Manager.removeBySource(removedBlock);
         } else if (Manager.isLinkedOutput(removedBlock)) {
+            Connections.sendIfInServer(Connections.UPDATE_REMOVE_BY_OUTPUT, removedBlock);
             Manager.removeByOutput(removedBlock);
         }
     }
