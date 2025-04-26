@@ -39,10 +39,6 @@ public class GlobalBlockPos extends BlockPos {
         return this.worldKey.equals(world.getRegistryKey());
     }
 
-    public boolean isIn(RegistryKey<World> world) {
-        return this.worldKey.equals(world);
-    }
-
     public ServerWorld getWorld(ServerWorld world) {
         return world.getServer().getWorld(this.worldKey);
     }
