@@ -21,7 +21,6 @@ public class ManagerLoader {
 
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
             if (client.getServer() != null) { // Check if the client is connected to an integrated server.
-                Manager.save(client.getServer().getSavePath(WorldSavePath.ROOT));
                 Manager.clear();
             }
         });
